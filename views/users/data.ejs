@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head') %> 
+<body>
+    <div class="container">
+        <%- include('../partials/nav') %> 
+        <h1 class="mt-3">Lets See Our Data</h1>
+        <% if(data.length > 0){ %>
+        <ul class="list-group mt-5">
+        
+            <% data.forEach(person => { %>
+            <li class="list-group-item"><a class="fs-4 text-decoration-none" href="data/<%= person._id %>"><%= person.name %></a> </li>
+            <% }) %>
+
+        </ul>
+        <% } else{ %>
+            <p> User's data not found</p>
+
+        <% } %>
+
+        
+    </div>
+    
+
+</body>
+</html>
