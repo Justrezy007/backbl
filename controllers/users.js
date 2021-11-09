@@ -1,11 +1,13 @@
 const Users = require('../models/users')
 
+// Menampilkan Halaman Create User
 const CreatePage = (req,res)=>{
     res.render('users/create',{
         title: 'Create'
     })
 }
 
+// Membuat User
 const createUser = (req,res)=>{
     const user = new Users(req.body)
     
@@ -14,11 +16,10 @@ const createUser = (req,res)=>{
     .catch(err => console.log(err))
 }
 
-
+// Mendapatkan Data User Secara Keseluruhan
 const getAllUsers = (req,res)=>{
     Users.find()
     .then(result=>{
-        console.log(result[0].name)
         res.render('users/data',{
             title: 'Data',
             data: result
@@ -27,6 +28,7 @@ const getAllUsers = (req,res)=>{
     .catch(err => res.send(err))
  }
 
+//  Mendapatkan Detail dari User berdasarkan ID
 const getUserById = (req,res)=>{
     const id = req.params.id
     Users.findById(id)
@@ -37,6 +39,7 @@ const getUserById = (req,res)=>{
     .catch(err => console.log(err))
 }
 
+// Menghapus user berdasarkan ID
 const deleteUserById = (req,res)=>{
     const id = req.params.id
     Users.findByIdAndDelete(id)
