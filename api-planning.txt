@@ -1,0 +1,187 @@
+Standar API
+
+[METHOD] : {root.api}/{version}/{grouping}/{endpoint}
+
+SAMPLE:
+[POST] : http://backjbapi.jarbis.com/v1/auth/login
+
+Standar Status Response
+
+200 - OK                    -> Call API Success
+201 - CREATED               -> Post Success
+400 - Bad Request           -> User Input Error
+401 - Unauthorized          -> User Not Authorized to The Request 
+403 - Forbidden             -> User Not Allowed to Access
+404 - Not Found             -> Request Endpoint Not Found
+500 - Internal Server Error -> Error on Server Side
+502 - Bad Gateway           -> Invalid Respone From Another Request
+
+**********************************************
+GROUP:
+# AUTHENTICATION # 
+==============================================
+[1] - Register
+{root.api}/{version}/auth/register
+
+----------------------------------------------
+req:
+{
+    "name"     : "Username",
+    "email"    : "usermail@gmail.com",
+    "password" : "Userpassword123"
+}
+----------------------------------------------
+res:
+{
+    "message"   : "Register Success",
+    "data"      : {
+                    "_id"       : 5,
+                    "name"      : "username",
+                    "email"     : "usermail@gmail.com",
+                    "password"  : "Userpassword123"
+    }
+}
+----------------------------------------------
+err-response:
+[400] - Input Yang Anda Masukan Tidak Valid
+==============================================
+[2] - Login
+{root.api}/{version}/auth/login
+
+----------------------------------------------
+req:
+{
+    "name"     : "Username",
+    "email"    : "usermail@gmail.com",
+    "password" : "Userpassword123"
+}
+----------------------------------------------
+res:
+{
+    "message"   : "Login Success",
+    "data"      : {
+                    "_id"       : 5,
+                    "name"      : "username",
+                    "email"     : "usermail@gmail.com",
+                    "password"  : "Userpassword123"
+    }
+}
+----------------------------------------------
+err-response:
+[400] - Input Yang Anda Masukan Tidak Valid
+==============================================
+**********************************************
+GROUP:
+# BLOG #
+==============================================
+[1] - Create Article
+==============================================
+[2] - Get Articles
+==============================================
+[3] - Update Article
+==============================================
+[4] - Delete Article
+==============================================
+**********************************************
+GROUP:
+# FREE COURSE FORM #
+==============================================
+[1] - Input Data User
+[POST] {root.api}/{version}/form/input
+----------------------------------------------
+req:
+{
+    "name"     : "Username",
+    "email"    : "usermail@gmail.com",
+    "NoWA"     : "085123212312"
+}
+----------------------------------------------
+res:
+{
+    "message"   : "Input Data Success",
+    "data"      : {
+                    "_id"       : 5,
+                    "name"      : "username",
+                    "email"     : "usermail@gmail.com",
+                    "NoWA"      : "085123212312"
+    }
+}
+----------------------------------------------
+err-response:
+[400] - Input Yang Anda Masukan Tidak Valid
+==============================================
+[2] - Get Data User [PRIVATE]
+[GET] {root.api}/{version}/form/getAll
+
+----------------------------------------------
+req:{}
+----------------------------------------------
+res:
+{
+    "message"   : "Get User Data Success",
+    "data"      : [
+                    {
+                        "_id"       : 5,
+                        "name"      : "username",
+                        "email"     : "usermail@gmail.com",
+                        "NoWA"      : "085123212312"
+                    }
+    ]
+}
+----------------------------------------------
+err-response:
+[404] - Data Tidak Ditemukan
+==============================================
+[3] - Update Data User [PRIVATE]
+[PUT] {root.api}/{version}/form/update/:id
+
+----------------------------------------------
+req: 
+{
+    "name"     : "Username",
+    "email"    : "usermail@gmail.com",
+    "NoWA"     : "085123212312"
+}
+----------------------------------------------
+res:
+{
+    "message"   : "Update User Data Success",
+    "data"      : [
+                    {
+                        "_id"       : 5,
+                        "name"      : "username",
+                        "email"     : "usermail@gmail.com",
+                        "NoWA"      : "085123212312"
+                    }
+    ]
+}
+----------------------------------------------
+err-response:
+[404] - Data Tidak Ditemukan
+[403] - Data User Tidak Boleh Diakses
+==============================================
+[4] - Delete Data User [PRIVATE]
+[DELETE] {root.api}/{version}/form/delete/:id
+
+----------------------------------------------
+req: 
+{}
+----------------------------------------------
+res:
+{
+    "message"   : "Delete User Data Success",
+    "data"      : [
+                    {
+                        "_id"       : 5,
+                        "name"      : "username",
+                        "email"     : "usermail@gmail.com",
+                        "NoWA"      : "085123212312"
+                    }
+    ]
+}
+----------------------------------------------
+err-response:
+[404] - Data Tidak Ditemukan
+[403] - Data User Tidak Boleh Diakses
+
+==============================================
