@@ -1,7 +1,7 @@
-const Users = require('../models/users')
+const FormData = require('../models/formData')
 
 const HomePage = (req,res)=>{
-    Users.find()
+    FormData.find()
     .then(result =>{
 
         res.render('index',{

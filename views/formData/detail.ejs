@@ -22,7 +22,7 @@
     
     delbtn.addEventListener('click',()=>{
 
-        const endpoint = `/dashboard/user/delete/${delbtn.dataset.doc}`
+        const endpoint = `/admin/formdata/${delbtn.dataset.doc}`
 
         fetch(endpoint,{method: 'DELETE'})
         .then(response=>response.json())

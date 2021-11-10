@@ -1,11 +1,15 @@
+// Thirdpart Middleware
 const express = require('express')
 const morgan = require('morgan')
 const mongoose = require('mongoose')
-
-const users = require('./routes/users')
-const pages = require('./routes/pages')
-const usersAPI = require('./routes/usersAPI')
 const bodyParser = require('body-parser')
+
+// Router
+const users = require('./routes/admin')
+const pages = require('./routes/pages')
+const formData = require('./routes/form')
+const authRouter = require('./routes/auth')
+
 
 const app = express()
 
@@ -35,9 +39,10 @@ app.use(express.urlencoded({extended : true}))
 app.use(morgan('dev'))
 
 // User Routes
-app.use('/dashboard',users)
-app.use('/dashboard',pages)
-app.use('/api',usersAPI)
+app.use('/admin',users)
+app.use('/admin',pages)
+app.use('/v1/form',formData)
+app.use('/v1/auth', authRouter)
 
 // error Handle
 app.use((req,res)=>{
